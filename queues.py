@@ -20,8 +20,8 @@ class SimpleQueue:
         """
         Constructor for a completely empty queue.
         """
-        self.__head = None
-        self.__tail = None
+        self._head = None
+        self._tail = None
         self.size = 0
 
     def enqueue(self, value):
@@ -32,12 +32,12 @@ class SimpleQueue:
         Arguments:
         value - the value of the item to be added to the end of the queue.
         """
-        new_node = SimpleQueueNode(value, self.__tail, None)
+        new_node = SimpleQueueNode(value, self._tail, None)
         if self.is_empty():
-            self.__head = new_node
+            self._head = new_node
         else:
-            self.__tail.next_node = new_node
-        self.__tail = new_node
+            self._tail.next_node = new_node
+        self._tail = new_node
         self.size += 1
 
     def dequeue(self):
@@ -50,12 +50,12 @@ class SimpleQueue:
         """
         if self.is_empty():
             return None
-        old_node = self.__head
-        self.__head = old_node.next_node
+        old_node = self._head
+        self._head = old_node.next_node
         # If the head becomes empty, we're out of nodes - the tail needs to
         # be made empty, as well.
-        if self.__head is None:
-            self.__tail = None
+        if self._head is None:
+            self._tail = None
         self.size -= 1
         return old_node.value
 
@@ -66,7 +66,7 @@ class SimpleQueue:
         Returns:
         boolean - indicating that the queue is empty or not
         """
-        return self.__head is None and self.__tail is None
+        return self._head is None and self._tail is None
 
 class SimpleQueueNode:
     """

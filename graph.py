@@ -4,7 +4,7 @@ class StationGraph:
     """
     A class representing a graph of train stations and their connections.
 
-    The private dictionary __nodes contains:
+    The private dictionary _nodes contains:
         keys - The names of each station (node) in the network.
         values - Another dict containing the name of each station (node) that
             station connects to (key), as well as the distance to that station
@@ -12,7 +12,7 @@ class StationGraph:
     """
     def __init__(self, connection_list):
         """
-        Initialize the __nodes dictionary with a user-provided list of station
+        Initialize the _nodes dictionary with a user-provided list of station
             connections.
 
         Arguments:
@@ -22,7 +22,7 @@ class StationGraph:
             format. The distance number can be any length. Throws a ValueError
             if any item in the list has fewer than 3 characters.
         """
-        self.__nodes = {}
+        self._nodes = {}
         for connection in connection_list:
             if len(connection) < 3:
                 raise ValueError("Expected a connection list item with a " \
@@ -39,7 +39,7 @@ class StationGraph:
         key - The key to retrieve the value for.
         """
         try:
-            return self.__nodes[key]
+            return self._nodes[key]
         except KeyError:
             return None
 
@@ -51,15 +51,15 @@ class StationGraph:
         Returns:
             list - all vertices in this graph. [] if empty.
         """
-        if self.__nodes == {}:
+        if self._nodes == {}:
             return []
-        return list(self.__nodes.keys())
+        return list(self._nodes.keys())
 
     def add_connection(self, node_from, node_to, distance):
         """
         Adds a single, unidirectional connection from any station to any other
             station. Stations that do not exist will be created and added to
-            __nodes.
+            _nodes.
 
         Arguments:
         node_from - The origin of the connection between two stations.
@@ -74,9 +74,9 @@ class StationGraph:
                     "itself: {:s} and {:s}".format(node_from, node_to))
 
         if self.get(node_from) is None:
-            self.__nodes[node_from] = {}
+            self._nodes[node_from] = {}
         if self.get(node_to) is None:
-            self.__nodes[node_to] = {}
+            self._nodes[node_to] = {}
 
         try:
             distance = int(distance)
@@ -86,7 +86,7 @@ class StationGraph:
         else:
             if distance <= 0:
                 raise ValueError("Distance of connection is zero or negative")
-        self.__nodes[node_from][node_to] = distance
+        self._nodes[node_from][node_to] = distance
 
     def are_adjacent(self, node_from, node_to):
         """
@@ -262,7 +262,7 @@ class StationGraph:
         # First, initialize min_distances with assumed min_distances for
         # the time being (i.e. 0 for origin, float("inf") for all possible
         # destinations
-        for key in self.__nodes.keys():
+        for key in self._nodes.keys():
             if key == node_from:
                 init_minimum = 0
             else:
