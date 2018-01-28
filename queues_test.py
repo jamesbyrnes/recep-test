@@ -128,6 +128,28 @@ class PriorityQueueUnitTests(unittest.TestCase):
         with self.assertRaises(IndexError):
             self.pq.heapify(0)
 
+    def test_queue_is_not_empty(self):
+        """
+        Does the queue correctly report itself as not being empty when filled?
+        """
+        self.pq.add('a')
+        self.pq.add('b')
+        self.pq.add('c')
+        self.assertFalse(self.pq.is_empty())
+
+    def test_queue_returns_to_empty(self):
+        """
+        After being filled and emptied, does the queue correctly report itself
+            as being empty?
+        """
+        self.pq.add('a')
+        self.pq.add('b')
+        self.pq.add('c')
+        self.pq.remove()
+        self.pq.remove()
+        self.pq.remove()
+        self.assertTrue(self.pq.is_empty())
+
     def test_queue_enqueues_and_dequeues_in_order_ints(self):
         """
         Do nodes loaded into the queue get entered and removed in the correct
