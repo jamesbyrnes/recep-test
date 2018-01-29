@@ -185,6 +185,8 @@ class StationGraph:
             maximum - The maximum moves/distance until the number of trips
                 stop being counted and the method exits. Will throw a
                 ValueError if less than minimum.
+            is_distance - Whether or not we're calculating the number of trips
+                possible based on distance (True) or number of moves (False).
         Returns:
             int - The number of possible trips given the restrictions.
         """
