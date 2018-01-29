@@ -3,9 +3,10 @@
 CODING TEST FOR RECEPTIVITI.AI - DIRECTED GRAPH ROUTE CALCULATOR
 Created by James Byrnes <mail@jamesbyrnes.ca>, January 2018
 
-This repo consists of six files:
+This repo consists of seven files:
     main.py - This file, intended to be used as a CLI frontend for the 
         calculator.
+    main_test.py - Unit test file for main.py
     graph.py - Class file for the directed graph data structure, including
         all of the calculation methods.
     graph_test.py - Unit test file for graph.py
@@ -17,12 +18,15 @@ This repo consists of six files:
     README.md - Recommended reading for more information
 """
 
-import argparse
+import argparse, sys
 from graph import StationGraph
 
-def get_arg_parser():
+def get_arg_parser(args):
     """
     Returns the argument parser for the program.
+
+    Arguments:
+        args - The arguments to be parsed
 
     Returns:
         argparse.ArgumentParser - the argument parser as set up
@@ -78,7 +82,7 @@ def get_arg_parser():
     sp_min_dist.add_argument('nodes', metavar='ORIGIN,DESTINATION',
             type=str, nargs=None)
 
-    return parser
+    return parser.parse_args(args)
 
 def argument_handler(arguments):
     """
@@ -122,9 +126,9 @@ def main():
     """
     Main entry method for this file. Intended to be used as a CLI frontend.
     """
-    parser = get_arg_parser()
+    parsed_args = get_arg_parser(sys.argv[1:])
 
-    output = argument_handler(parser.parse_args())
+    output = argument_handler(parsed_args)
 
     print(output)
 
