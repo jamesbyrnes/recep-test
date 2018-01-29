@@ -144,7 +144,7 @@ class StationGraphAdvCalcTestCases(unittest.TestCase):
         test_input = ['AB5', 'BC4', 'CD8', 'DC8', 'DE6', 'AD5', 'CE2', 'EB3', 'AE7']
         self.stations = StationGraph(test_input)
 
-    def test_set_1(self):
+    def test_set_questions_1_through_5(self):
         """
         Runs the first five tests against the data set. (Tests 1-5)
         """
@@ -156,21 +156,21 @@ class StationGraphAdvCalcTestCases(unittest.TestCase):
         self.assertEqual(self.stations.get_distance_by_route(['A', 'E', 'B', 'C', 'D']), '22')
         self.assertEqual(self.stations.get_distance_by_route(['A', 'E', 'D']), 'NO SUCH ROUTE')
 
-    def test_set_2(self):
+    def test_set_questions_6_through_7(self):
         """
         Runs the next two tests against the data set. (Tests 6-7)
         """
         self.assertEqual(self.stations.num_trips_by_moves('C', 'C', 1, 3), 2)
         self.assertEqual(self.stations.num_trips_by_moves('A', 'C', 4, 4), 3)
 
-    def test_set_3(self):
+    def test_set_questions_8_through_9(self):
         """
         Runs the next two tests against the data set. (Tests 8-9)
         """
         self.assertEqual(self.stations.min_route_distance('A', 'C'), 9)
         self.assertEqual(self.stations.min_route_distance('B', 'B'), 9)
 
-    def test_set_4(self):
+    def test_set_question_10(self):
         """
         Runs the final test against the data set. (Test 10)
         """
