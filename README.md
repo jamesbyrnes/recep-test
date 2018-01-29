@@ -1,8 +1,8 @@
-# CODING TEST - DIRECTED GRAPH ROUTE CALCULATOR
+# Coding Test - Directed graph route calculator
 
 This is a set of tools used to calculate various aspects of a unidirectional directed graph.
 
-The below discusses the contents of the repo and how to use the CLI interface. The rest of the code is documented inside of the source code files themselves.
+The below discusses the contents of the repo and how to use the test files and CLI interface. The rest of the code is documented inside of the source code files themselves.
 
 ## Files
 This repo consists of seven files:
@@ -13,6 +13,11 @@ This repo consists of seven files:
 * queues.py - Queue data structures for use with the directed graph.  Includes a simple queue data structure as well as a priority queue.  Currently only the priority queue is used, with the simple queue kept for posterity.
 * queues_test.py - Unit test file for queues.py
 * README.md - Recommended reading for more information
+
+## Running tests
+Tests can be run by calling the \*\_test.py file directly for the respective .py file.
+
+The output tests as specified in the original text file (trains.txt) is available under graph_test.py, under the class StationGraphAdvCalcTestCases.
 
 ## Using the CLI interface
 You can build a graph and run calculations through the CLI using main.py. 
@@ -26,6 +31,7 @@ Where CONN1, etc. are graph connection arguments (represented by two letters and
 The four function args are as follows:
 
 **route** - Gives the total distance of a specific route - i.e. all points of the route traversed must be specified -- if A>B>C is possible but A>C is not, asking for A>C will *not* give you A>B>C.
+
 Arguments:
 * (nodes) - A comma-separated list of node names.
 ```
@@ -36,6 +42,7 @@ Arguments:
 ```
 
 **movetrips** - Gives the total number of trips that can be made between two points within a certain number of moves. You can also provide a minimum number of moves.
+
 Arguments:
 * (nodes) - A comma-separated pair of node names.
 * **--minimum**, **-m** - The minimum threshold of moves before we begin counting trips. Defaults to 1.
@@ -46,6 +53,7 @@ Arguments:
 ```
 
 **disttrips** - Gives the total number of trips that can be made between two points within a certain distance. You can also provide a minimum distance.
+
 Arguments:
 * (nodes) - A comma-separated pair of node names.
 * **--minimum**, **-m** - The minimum threshold of distance before we begin counting trips. Defaults to 1.
@@ -56,6 +64,7 @@ Arguments:
 ```
 
 **mindist** - Gets the shortest total distance between two points using Dijkstra's algorithm. This version is modified to allow for a route that traverses back to the origin if such a route is possible.
+
 Arguments:
 * (nodes) - A comma-separated pair of node names.
 ```
