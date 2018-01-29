@@ -19,7 +19,7 @@ Tests can be run by calling the \*\_test.py file directly for the respective .py
 
 The output tests as specified in the original text file (trains.txt) is available under graph_test.py, under the class StationGraphAdvCalcTestCases.
 
-## Using the CLI interface
+## Using the CLI
 You can build a graph and run calculations through the CLI using main.py. 
 
 The basic template for a CLI argument is formatted as follows:
