@@ -12,7 +12,7 @@ class StationGraphSetupTestCases(unittest.TestCase):
     def test_connection_add_success(self):
         """
         Test that, when a conncetion is created, nodes for the origin and
-        destination are added along with the distance to the destination.
+            destination are added along with the distance to the destination.
         """
         self.stations.add_connection('A', 'B', 5)
         self.assertEqual(self.stations.get('A'), {'B': 5})
@@ -21,7 +21,7 @@ class StationGraphSetupTestCases(unittest.TestCase):
     def test_connection_distance_error(self):
         """
         Will an error be thrown when a distance that is not a number, or
-        <= 0, is provided?
+            <= 0, is provided?
         """
         with self.assertRaises(ValueError):
             self.stations.add_connection('A', 'B', 'C')
@@ -33,7 +33,7 @@ class StationGraphSetupTestCases(unittest.TestCase):
     def test_connection_self_error(self):
         """
         Will an error be thrown when a connection is added between a station
-        and itself?
+            and itself?
         """
         with self.assertRaises(ValueError):
             self.stations.add_connection('A', 'A', 5)
@@ -56,7 +56,7 @@ class StationGraphSetupTestCases(unittest.TestCase):
     def test_min_distance_error_exist(self):
         """
         Does the method min_route_distance() throw an error when a nonexistant
-        node is specified?
+            node is specified?
         """
         self.stations.add_connection('A', 'B', 5)
         with self.assertRaises(ValueError):
@@ -67,7 +67,7 @@ class StationGraphSetupTestCases(unittest.TestCase):
     def test_min_distance_basic(self):
         """
         Does the method min_route_distance() choose the best route in a
-        basic scenario? (i.e. shorter route is the one with more nodes)
+            basic scenario? (i.e. shorter route is the one with more nodes)
         """
         self.stations.add_connection('A', 'B', 10)
         self.stations.add_connection('A', 'C', 1)
@@ -77,7 +77,7 @@ class StationGraphSetupTestCases(unittest.TestCase):
 class StationGraphSimpleCalcTestCases(unittest.TestCase):
     """
     Unit testing for simple distance calculation methods of a
-    StationGraph object.
+        StationGraph object.
     """
     def setUp(self):
         test_input = ['AB5', 'BC4', 'CD6', 'AD7', 'ED5']
@@ -86,7 +86,7 @@ class StationGraphSimpleCalcTestCases(unittest.TestCase):
     def test_adjacency(self):
         """
         Will adjacent nodes indicate they are adjacent, while non-
-        adjacent nodes don't?
+            adjacent nodes don't?
         """
         self.assertTrue(self.stations.are_adjacent('A', 'B'))
         self.assertFalse(self.stations.are_adjacent('A', 'C'))
@@ -94,7 +94,7 @@ class StationGraphSimpleCalcTestCases(unittest.TestCase):
     def test_distance_tracking(self):
         """
         Will the distance between points A and C show the correct
-        total distance?
+            total distance?
         """
         test_route_good = ['A', 'B', 'C']
         test_route_bad = ['A', 'C']
@@ -138,7 +138,7 @@ class StationGraphSimpleCalcTestCases(unittest.TestCase):
 class StationGraphAdvCalcTestCases(unittest.TestCase):
     """
     Unit testing for advanced distance calculation methods of a
-    StationGraph object.
+        StationGraph object.
     """
     def setUp(self):
         test_input = ['AB5', 'BC4', 'CD8', 'DC8', 'DE6', 'AD5', 'CE2', 'EB3', 'AE7']

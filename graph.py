@@ -16,11 +16,11 @@ class StationGraph:
             connections.
 
         Arguments:
-        connection_list - A list of connection sets, each item consisting of
-            two station names and the distance between the stations - e.g.
-            'AB2'. The node names can only be one character each in this
-            format. The distance number can be any length. Throws a ValueError
-            if any item in the list has fewer than 3 characters.
+            connection_list - A list of connection sets, each item consisting of
+                two station names and the distance between the stations - e.g.
+                'AB2'. The node names can only be one character each in this
+                format. The distance number can be any length. Throws a ValueError
+                if any item in the list has fewer than 3 characters.
         """
         self._nodes = {}
         for connection in connection_list:
@@ -36,7 +36,9 @@ class StationGraph:
             in the object.
 
         Arguments:
-        key - The key to retrieve the value for.
+            key - The key to retrieve the value for.
+        Returns:
+            dict - The dict of connections associated with the key.
         """
         try:
             return self._nodes[key]
@@ -62,12 +64,12 @@ class StationGraph:
             _nodes.
 
         Arguments:
-        node_from - The origin of the connection between two stations.
-        node_to - The destination of the connection between two stations. Will
-            throw a ValueError if this has the same name as node_from.
-        distance - The distance between the two stations being connected. Will
-            throw a ValueError if the argument provided is not an int or
-            the int is <=0.
+            node_from - The origin of the connection between two stations.
+            node_to - The destination of the connection between two stations. Will
+                throw a ValueError if this has the same name as node_from.
+            distance - The distance between the two stations being connected. Will
+                throw a ValueError if the argument provided is not an int or
+                the int is <=0.
         """
         if node_from == node_to:
             raise ValueError("Connection attempted between a node and " \

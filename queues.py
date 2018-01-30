@@ -8,9 +8,9 @@ class SimpleQueue:
     the front)
 
     Private variables are:
-        head - the first SimpleQueueNode in the queue. Returns None if queue
+        _head - the first SimpleQueueNode in the queue. Returns None if queue
             is empty.
-        tail - the last SimpleQueueNode in the queue. Returns None if the queue
+        _tail - the last SimpleQueueNode in the queue. Returns None if the queue
             is empty.
 
     Public variables are:
@@ -46,7 +46,7 @@ class SimpleQueue:
             queue is empty.
 
         Returns:
-        (any type) - the value contained in the SimpleQueueNode.
+            (any type) - the value contained in the SimpleQueueNode.
         """
         if self.is_empty():
             return None
@@ -64,7 +64,7 @@ class SimpleQueue:
         Returns a boolean indicating whether or not this queue is empty.
 
         Returns:
-        boolean - indicating that the queue is empty or not
+            boolean - indicating that the queue is empty or not
         """
         return self._head is None and self._tail is None
 
@@ -126,6 +126,15 @@ class PriorityQueue:
         """
         return self.size == 0
 
+    def get_type(self):
+        """
+        Identifies the type associated with this queue.
+
+        Returns:
+            type - The value of self._type
+        """
+        return self._type
+
     def add(self, value):
         """
         Adds a value to the end of the priority queue, then "works"
@@ -151,6 +160,11 @@ class PriorityQueue:
                 value.__eq__(value) is NotImplemented:
             raise TypeError('Type added to queue is not a comparable type.')
 
+        # FIX 2018-01-30 - Set the type of queue if we are adding to the queue for the first
+        # time.
+        if self._type is None and self.is_empty():
+            self._type = type(value)
+
         self._nodes.append(value)
         self.size += 1
 
@@ -171,7 +185,7 @@ class PriorityQueue:
             to re-sort the queue.
 
         Returns:
-            (value) - The value of the first item in the queue.
+            (any type) - The value of the first item in the queue.
         """
         if self.is_empty():
             raise IndexError("Tried to remove a value from an empty queue")

@@ -150,6 +150,52 @@ class PriorityQueueUnitTests(unittest.TestCase):
         self.pq.remove()
         self.assertTrue(self.pq.is_empty())
 
+    def test_queue_size_increments(self):
+        """
+        Does the variable 'size' increment when enqueuing occurs?
+        """
+        self.pq.add('a')
+        self.assertEqual(self.pq.size, 1)
+        self.pq.add('b')
+        self.assertEqual(self.pq.size, 2)
+        self.pq.add('c')
+        self.assertEqual(self.pq.size, 3)
+
+    def test_queue_size_decrements(self):
+        """
+        Does the variable 'size' increment when enqueuing occurs?
+        """
+        self.pq.add('a')
+        self.pq.add('b')
+        self.pq.add('c')
+        self.pq.remove()
+        self.assertEqual(self.pq.size, 2)
+        self.pq.remove()
+        self.assertEqual(self.pq.size, 1)
+        self.pq.remove()
+        self.assertEqual(self.pq.size, 0)
+
+    def test_queue_type_initializes_none(self):
+        """
+        When initialized, does the queue correctly report itself as a None type?
+        """
+        self.assertIsNone(self.pq.get_type())
+
+    def test_queue_type_is_stored(self):
+        """
+        Does queue return the correct type after an object is added?
+        """
+        self.pq.add(1)
+        self.assertEqual(self.pq.get_type(), int)
+
+    def test_queue_type_is_retained(self):
+        """
+        Does queue return the correct type after an object is added and removed?
+        """
+        self.pq.add(1)
+        self.pq.remove()
+        self.assertEqual(self.pq.get_type(), int)
+
     def test_queue_enqueues_and_dequeues_in_order_ints(self):
         """
         Do nodes loaded into the queue get entered and removed in the correct
